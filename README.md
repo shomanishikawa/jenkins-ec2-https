@@ -28,7 +28,7 @@ I've tested this process and it took exactly *5 minutes* to get to the https log
 ## Deploy jenkins
 Login to the instance using the ssh command mentioned above. Then run:
 ```bash
-wget --no-cache https://raw.githubusercontent.com/davidmoten/jenkins-ec2-https/master/setup.sh && chmod +x setup.sh
+wget --no-cache https://raw.githubusercontent.com/shomanishikawa/jenkins-ec2-https/master/setup.sh && chmod +x setup.sh
 ```
 Now edit the file `setup.sh` and edit the top block of parameters with the values you want to see in the generated certificate for jenkins website.
 ```bash
@@ -40,6 +40,10 @@ Now run setup:
 ./setup.sh
 ```
 Now go to https://your_instance in the browser and paste in the last line output by the `setup.sh` script into the administration password in the browser. If the browser times out go to the same url again (make sure it's https). That's it!
+
+
+## Config files
+Change jenkins port to 8081 and set the context path --prefix=/jenkins to JENKINS_ARGS in /etc/default/jenkins
 
 ## Sources
 * https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Ubuntu
