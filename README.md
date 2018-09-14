@@ -45,6 +45,11 @@ Now go to https://your_instance in the browser and paste in the last line output
 ## Config files
 Change jenkins port to 8081 and set the context path --prefix=/jenkins to JENKINS_ARGS in /etc/default/jenkins
 
+## Restart commands
+`sudo vim /etc/apache2/sites-enabled/ssl.conf`
+`sudo /etc/init.d/apache2 restart`
+`sudo service jenkins restart`
+
 ## Sources
 * https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Ubuntu
 * https://github.com/hughperkins/howto-jenkins-ssl
