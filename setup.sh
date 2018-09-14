@@ -3,9 +3,9 @@
 ## Set the values in this section
 #################################################################
 HOSTNAME='ec2-52-63-456-123.ap-southeast-2.compute.amazonaws.com'
-COUNTRY='AU'
-STATE='Australian Capital Territory'
-CITY='Canberra'
+COUNTRY='US'
+STATE='New York'
+CITY='New York'
 ORG='MyCompany'
 ORG_UNIT='IT'
 EMAIL='somebody@gmail.com'
@@ -45,11 +45,14 @@ Listen 443
   SSLOptions +ExportCertData
 
   Header always set Strict-Transport-Security "max-age=63072000; includeSubdomains; preload"
-  Header always set X-Frame-Options DENY
+  # Header always set X-Frame-Options DENY
   Header always set X-Content-Type-Options nosniff
 
-  ProxyPass / http://localhost:8080/ retry=0 nocanon
-  ProxyPassReverse / http://localhost:8080/
+  ProxyPass /jenkins http://localhost:8081/jenkins retry=0 nocanon
+  ProxyPassReverse /jenkins http://localhost:8081/jenkins
+  SSLProxyEngine on
+  ProxyPass / https://localhost:8080/ retry=0 nocanon
+  ProxyPassReverse / https://localhost:8080/
   ProxyPreserveHost on
   AllowEncodedSlashes NoDecode
   RequestHeader set X-Forwarded-Proto "https"
